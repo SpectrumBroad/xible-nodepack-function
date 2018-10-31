@@ -1,0 +1,41 @@
+<script type="module">
+  if (!window.customElements.get('ace-editor')) {
+    class AceEditor extends HTMLElement {
+      async connectedCallback() {
+        const xibleNode = this.getRootNode().xibleNode;
+        const ace = await import(`/api/node-routes/${xibleNode._id}/ace-src-min-noconflict/ace.js`);
+
+        window.ace.config.set('basePath', `/api/node-routes/${xibleNode._id}/ace-src-min-noconflict`);
+        const editor = window.ace.edit(this);
+        editor.renderer.attachToShadowRoot();
+
+        editor.setTheme('ace/theme/monokai');
+        editor.session.setMode('ace/mode/javascript');
+
+        // handle data
+        editor.setValue(xibleNode.getData('function'));
+        editor.on('input', () => {
+          xibleNode.setData({
+            function: editor.getValue()
+          });
+        });
+      }
+    }
+
+    window.customElements.define('ace-editor', AceEditor);
+  }
+</script>
+<style>
+  ace-editor {
+    display: block;
+    height: 200px;
+  }
+
+  /* weirdly improves performance massively
+   * by overriding the default translatez(0) from ace
+   */
+  .ace_cursor {
+    transform: none;
+  }
+</style>
+<ace-editor></ace-editor>

@@ -1,0 +1,25 @@
+{
+  "name": "xible-nodepack-function",
+  "version": "0.1.0",
+  "description": "Node for XIBLE which allows you to run javascript code directly.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spectrumbroad/xible-nodepack-function"
+  },
+  "bugs": {
+    "url": "https://github.com/spectrumbroad/xible-nodepack-function/issues",
+    "email": "bugs@xible.io"
+  },
+  "keywords": [
+    "xible",
+    "function",
+    "nodepack"
+  ],
+  "scripts": {
+    "prepublishOnly": "npm shrinkwrap --only=prod"
+  },
+  "dependencies": {
+    "ace-builds": "*"
+  }
+}

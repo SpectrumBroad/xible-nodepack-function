@@ -1,0 +1,23 @@
+{
+  "name": "function",
+  "type": "action",
+  "description": "Run javascript directly within XIBLE, including manipulating input and output values of the node.",
+  "inputs": {
+    "trigger": {
+      "type": "trigger"
+    },
+    "inputs": {
+      "description": "Reference these input values using the 'inputs' variable in your code, which returns an array."
+    }
+  },
+  "outputs": {
+    "trigger": {
+      "type": "trigger",
+      "description": "Call 'trigger()' in your code to trigger this output."
+    },
+    "values": {
+      "type": "object",
+      "description": "Assign one or multiple values to this output by assigning directly to the 'values' variable in your code."
+    }
+  }
+}
