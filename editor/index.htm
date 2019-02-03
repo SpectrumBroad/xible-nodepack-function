@@ -13,7 +13,7 @@
         editor.session.setMode('ace/mode/javascript');
 
         // handle data
-        editor.setValue(xibleNode.getData('function'));
+        editor.setValue(xibleNode.getData('function') || '');
         editor.on('input', () => {
           xibleNode.setData({
             function: editor.getValue()
