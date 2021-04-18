@@ -1,6 +1,6 @@
 {
   "name": "xible-nodepack-function",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Node for XIBLE which allows you to run javascript code directly.",
   "license": "MIT",
   "repository": {
