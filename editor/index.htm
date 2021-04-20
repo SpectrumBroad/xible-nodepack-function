@@ -3,9 +3,9 @@
     class AceEditor extends HTMLElement {
       async connectedCallback() {
         const xibleNode = this.getRootNode().xibleNode;
-        const ace = await import(`/api/node-routes/${xibleNode._id}/ace-src-min-noconflict/ace.js`);
+        const ace = await import(`/api/nodes/function/routes/global/ace-src-min-noconflict/ace.js`);
 
-        window.ace.config.set('basePath', `/api/node-routes/${xibleNode._id}/ace-src-min-noconflict`);
+        window.ace.config.set('basePath', `/api/nodes/function/routes/global/ace-src-min-noconflict`);
         const editor = window.ace.edit(this);
         editor.renderer.attachToShadowRoot();
 
