@@ -14,10 +14,26 @@
 
         // handle data
         editor.setValue(xibleNode.getData('function') || '');
-        editor.on('input', () => {
-          xibleNode.setData({
-            function: editor.getValue()
-          });
+        editor.on('change', () => {
+          // do not call  setData() if this change event was the result of
+          // a programmatic call to editor.setValue()
+          if (editor.curOp?.command?.name == null) {
+            return;
+          }
+
+          xibleNode.setData('function', editor.getValue());
+        });
+
+        xibleNode.on('setdata', (attr, value, src) => {
+          if (
+            attr !== 'function'
+            || typeof value !== 'string'
+            || src === xibleNode
+          ) {
+            return;
+          }
+
+          editor.setValue(value);
         });
       }
     }
@@ -37,5 +53,16 @@
   .ace_cursor {
     transform: none;
   }
+
+  :host-context(.edit) ace-editor {
+    height: 100%;
+  }
+
+  :host-context(.edit) label {
+    height: 100%;
+  }
 </style>
-<ace-editor></ace-editor>
+<label data-description="The javascript function to execute.">
+  <span class="label">function</span>
+  <ace-editor></ace-editor>
+</label>
