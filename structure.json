@@ -8,6 +8,10 @@
     },
     "inputs": {
       "description": "Reference these input values using the 'inputs' variable in your code, which returns an array."
+    },
+    "variables": {
+      "type": "variable",
+      "description": "Reference these variables using the 'variables' variable in your code. This returns a map of your named variables which van be address like so: 'variables[\"myVar\"]'"
     }
   },
   "outputs": {
